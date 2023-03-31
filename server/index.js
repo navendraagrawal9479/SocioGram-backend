@@ -13,6 +13,7 @@ import userRoutes from './routes/users.js'
 import postRoutes from './routes/posts.js'
 import starterRoute from './routes/start.js'
 import cloudinary from 'cloudinary'
+import searchRoute from './routes/search.js'
 
 /* CONFIGURATION */ const __filename = fileURLToPath(import.meta.url); //converts a url to a path string
 const __dirname = path.dirname(__filename);
@@ -38,6 +39,7 @@ app.use('/', starterRoute);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
+app.use('/search', searchRoute);
 
 /* MONGOOSE SETUP */
 
