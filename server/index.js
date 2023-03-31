@@ -11,6 +11,7 @@ import { fileURLToPath } from "url"; //middleware and package configurations
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/users.js'
 import postRoutes from './routes/posts.js'
+import starterRoute from './routes/start.js'
 import cloudinary from 'cloudinary'
 
 /* CONFIGURATION */ const __filename = fileURLToPath(import.meta.url); //converts a url to a path string
@@ -33,6 +34,7 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets"))); //to 
 
 /* ROUTES */
 
+app.use('/', starterRoute);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
