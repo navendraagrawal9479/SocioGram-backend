@@ -11,11 +11,12 @@ export const createPost = async (req, res) => {
     const { userId, description } = req.body;
     const user = await User.findById(userId);
     const file = req.file;
+    let fileUrl, cloudUri;
 
     if(file){
-      const fileUrl = getDataUri(file);
+      fileUrl = getDataUri(file);
     
-      const cloudUri = await cloudinary.uploader.upload(fileUrl.content);
+      cloudUri = await cloudinary.uploader.upload(fileUrl.content);
     }
 
     const newPost = new Post({
