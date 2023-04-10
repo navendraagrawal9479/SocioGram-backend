@@ -217,7 +217,9 @@ export const deletePost = async (req, res) => {
       const error = new Error("Post not found.");
       throw error;
     }
-    await cloudinary.uploader.destroy(post.imageId);
+    if(post.imageUrl && post.imageId){
+      await cloudinary.uploader.destroy(post.imageId);
+    }
 
     await Post.findByIdAndRemove(postId);
     console.log("function Called.");
