@@ -26,8 +26,8 @@ export const createPost = async (req, res) => {
       location: user.location,
       description,
       userPicturePath: user.picturePath,
-      picturePath: cloudUri.secure_url || "",
-      imageId: cloudUri.public_id || "",
+      picturePath: cloudUri ? cloudUri.secure_url : "",
+      imageId: cloudUri ? cloudUri.public_id : "",
       likes: {},
       comments: [],
     });
