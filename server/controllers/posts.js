@@ -12,9 +12,11 @@ export const createPost = async (req, res) => {
     const user = await User.findById(userId);
     const file = req.file;
 
-    const fileUrl = getDataUri(file);
+    if(file){
+      const fileUrl = getDataUri(file);
     
-    const cloudUri = await cloudinary.uploader.upload(fileUrl.content);
+      const cloudUri = await cloudinary.uploader.upload(fileUrl.content);
+    }
 
     const newPost = new Post({
       userId,
@@ -23,8 +25,8 @@ export const createPost = async (req, res) => {
       location: user.location,
       description,
       userPicturePath: user.picturePath,
-      picturePath: cloudUri.secure_url,
-      imageId: cloudUri.public_id,
+      picturePath: cloudUri.secure_url || "",
+      imageId: cloudUri.public_id || "",
       likes: {},
       comments: [],
     });
