@@ -60,10 +60,7 @@ const PostSchema = new mongoose.Schema(
       type: [commentSchema],
       default: [],
     },
-    imageId: {
-      type: String,
-      required: true,
-    },
+    imageId: String,
   },
   { timestamps: true }
 );
